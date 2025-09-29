@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>С Днём Рождения, Даньчик!</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Rubik+Glitch&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Orbitron', sans-serif;
+  background: radial-gradient(circle at top, #0f0f1c, #000);
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* Хедер */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(8px);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #0ff;
+  box-shadow: 0 0 10px #0ff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  object-fit: cover;
+}
+
+.logo img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px #0ff, 0 0 40px #0ff;
+}
+
+.logo span {
+  font-family: 'Rubik Glitch', cursive;
+  font-size: 1.4rem;
+  color: #0ff;
+  text-shadow: 0 0 8px #0ff;
+}
+
+/* Герой-блок */
+.hero {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 20px 40px 20px;
+}
+
+.hero h1 {
+  font-size: 4vw;
+  max-font-size: 70px;
+  color: #ff0080;
+  text-shadow: 0 0 20px #ff0080, 0 0 40px #ff0080;
+  margin: 0;
+  animation: pulse 2s infinite alternate;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  max-width: 90%;
+  margin-top: 20px;
+  color: #ccc;
+}
+
+@keyframes pulse {
+  from { text-shadow: 0 0 10px #ff0080, 0 0 30px #ff0080; }
+  to { text-shadow: 0 0 25px #ff0080, 0 0 60px #ff0080; }
+}
+
+/* Поздравления Genshin */
+.genshin-wishes {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.genshin-wishes h2 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+  color: #0ff;
+  text-shadow: 0 0 10px #0ff;
+}
+
+.wishes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.wish-card {
+  background: rgba(255,255,255,0.05);
+  border: 2px solid #0ff;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 0 15px #0ff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.wish-card:hover {
+  transform: rotate(-2deg) scale(1.05);
+  box-shadow: 0 0 30px #ff0, 0 0 50px #0ff;
+}
+
+.wish-card img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+  filter: drop-shadow(0 0 10px #0ff) drop-shadow(0 0 20px #ff0080);
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.wish-card img:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 20px #ff0080) drop-shadow(0 0 40px #0ff);
+}
+
+/* Кошки */
+.cats {
+  text-align: center;
+  padding: 50px 20px;
+  background: linear-gradient(135deg, #0a0a0a, #111);
+}
+
+.cats h2 {
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+  color: #0ff;
+  text-shadow: 0 0 8px #0ff, 0 0 16px #ff00ff;
+}
+
+.cats-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+.cat-item {
+  position: relative;
+  width: 40%;
+  max-width: 220px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.cat-item img {
+  width: 100%;
+  display: block;
+  border-radius: 12px;
+}
+
+.cat-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px #0ff, 0 0 40px #ff00ff;
+}
+
+/* Мини-галерея */
+.gallery {
+  padding: 60px 20px;
+  background: #111;
+  text-align: center;
+}
+
+.gallery h2 {
+  font-size: 2rem;
+  color: #0ff;
+  margin-bottom: 30px;
+  text-shadow: 0 0 8px #0ff;
+}
+
+.gallery-container {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 10px;
+}
+
+.gallery-container img {
+  flex: 0 0 auto;
+  height: 280px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px #ff0080;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-container img:hover {
+  transform: scale(1.05) rotate(2deg);
+  box-shadow: 0 0 20px #0ff, 0 0 40px #ff0080;
+}
+
+/* Секретный доступ */
+.secret-access {
+  text-align: center;
+  padding: 50px 20px;
+  background: linear-gradient(135deg, #0a0a0a, #111);
+  color: #fff;
+}
+
+.secret-access h2 {
+  color: #ff00ff;
+  text-shadow: 0 0 8px #ff00ff, 0 0 16px #0ff;
+}
+
+.secret-access button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #0ff;
+  background: transparent;
+  border: 2px solid #0ff;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.secret-access button:hover {
+  background: #0ff;
+  color: #000;
+  box-shadow: 0 0 15px #0ff;
+}
+
+#secret-form {
+  margin-top: 20px;
+}
+
+#secret-form.hidden { display: none; }
+
+#secret-input {
+  padding: 8px;
+  border: none;
+  border-radius: 6px;
+  outline: none;
+  text-align: center;
+  font-size: 1rem;
+  margin-right: 8px;
+}
+
+/* Футер */
+footer {
+  padding: 20px;
+  background: #000;
+  text-align: center;
+  font-size: 16px;
+  color: #888;
+}
+
+footer span {
+  color: #0ff;
+  text-shadow: 0 0 6px #0ff;
+}
+
+/* Адаптив */
+@media (max-width: 768px) {
+  .hero h1 { font-size: 6vw; }
+  .hero p { font-size: 1rem; }
+  .wish-card img { width: 100%; }
+  .cat-item { width: 45%; }
+  .gallery-container img { height: 280px; }
+}
+
+@media (max-width: 480px) {
+  header { flex-direction: column; gap: 5px; padding: 10px; }
+  .hero h1 { font-size: 8vw; }
+  .hero p { font-size: 0.9rem; }
+  .cats h2 { font-size: 1.5rem; }
+  .cat-item { width: 90%; }
+  .gallery-container img { height: 280px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <img src="img/photo1.jpg" alt="Даньчик">
+    <span>Данька-встанька</span>
+  </div>
+</header>
+
+<section class="hero">
+  <h1>С Днём Рождения, Даняяяяяяя!</h1>
+  <p>Тебе сегодня 23 🎉<br>Ты — мой лучший друг, анимешник, фанат Genshin и кошек 🐾<br>Пусть жизнь сияет неоном, как этот сайт!</p>
+</section>
+
+<section class="genshin-wishes">
+  <h2>Поздравления от персонажей Genshin</h2>
+  <div class="wishes-grid">
+    <div class="wish-card">
+      <img src="img/gen1.png" alt="Hu Tao">
+      <h3>Furina</h3>
+      <p>«Ну чё, старик, тебе уже 23... пора думать о гробике, хаха!»</p>
+    </div>
+    <div class="wish-card">
+      <img src="img/gen2.png" alt="Xiao">
+      <h3>Raiden</h3>
+      <p>«Опять день рождения? Сколько можно жрать тортики и стареть.»</p>
+    </div>
+    <div class="wish-card">
+      <img src="img/gen3.png" alt="Чжун Ли">
+      <h3>Lumine</h3>
+      <p>«Желаю тебе финансовой стабильности… хотя мы оба знаем, что все уйдёт на донат.»</p>
+    </div>
+    <div class="wish-card">
+      <img src="img/gen4.png" alt="Ху Тао">
+      <h3>Mavuika</h3>
+      <p>«Поздравляю! Желаю здоровья… чтобы ты мог дольше страдать в спиральной бездне.»</p>
+    </div>
+  </div>
+</section>
+
+<section class="cats">
+  <h2>😺 Кошачья галерея</h2>
+  <div class="cats-gallery"> <div class="cat-item"> <img src="img/cat1.jpg" alt="Кот мем 1" /> <audio class="purr-sound"> <source src="music/purr.mp3" type="audio/mpeg"> </audio> </div> <div class="cat-item"> <img src="img/cat2.jpg" alt="Кот мем 2" /> <audio class="purr-sound"> <source src="music/purr.mp3" type="audio/mpeg"> </audio> </div> <div class="cat-item"> <img src="img/cat3.jpg" alt="Кот мем 3" /> <audio class="purr-sound"> <source src="music/purr.mp3" type="audio/mpeg"> </audio> </div> <div class="cat-item"> <img src="img/cat4.jpg" alt="Кот мем 4" /> <audio class="purr-sound"> <source src="music/purr.mp3" type="audio/mpeg"> </audio> </div> <div class="cat-item"> <img src="img/cat5.jpg" alt="Кот мем 2" /> <audio class="purr-sound"> <source src="music/purr.mp3" type="audio/mpeg"> </audio> </div> <div class="cat-item"> <img src="img/cat6.jpg" alt="Кот мем 3" /> <audio class="purr-sound"> <source src="music/purr.mp3" type="audio/mpeg"> </audio> </div> <div class="cat-item"> <img src="img/cat7.jpg" alt="Кот мем 1" /> <audio class="purr-sound"> <source src="music/purr.mp3" type="audio/mpeg"> </audio> </div> <div class="cat-item"> <img src="img/cat8.jpg" alt="Кот мем 2" /> <audio class="purr-sound"> <source src="music/purr.mp3" type="audio/mpeg"> </audio> </div> <div class="cat-item"> <img src="img/cat9.jpg" alt="Кот мем 3" /> <audio class="purr-sound"> <source src="music/purr.mp3" type="audio/mpeg"> </audio> </div> <div class="cat-item"> <img src="img/cat10.jpg" alt="Кот мем 3" /> <audio class="purr-sound"> <source src="music/purr.mp3" type="audio/mpeg"> </audio> </div> <div class="cat-item"> <img src="img/cat12.jpg" alt="Кот мем 1" /> <audio class="purr-sound"> <source src="music/purr.mp3" type="audio/mpeg"> </audio> </div> <div class="cat-item"> <img src="img/cat13.jpg" alt="Кот мем 2" /> <audio class="purr-sound"> <source src="music/purr.mp3" type="audio/mpeg"> </audio> </div> <div class="cat-item"> <img src="img/cat14.jpg" alt="Кот мем 3" /> <audio class="purr-sound"> <source src="music/purr.mp3" type="audio/mpeg"> </audio> </div> <div class="cat-item"> <img src="img/cat15.jpg" alt="Кот мем 3" /> <audio class="purr-sound"> <source src="music/purr.mp3" type="audio/mpeg"> </audio> </div> </div>
+</section>
+
+<section class="gallery">
+  <h2>Твоя мини-галерея</h2>
+  <div class="gallery-container"> <img src="img/photo1.jpg" alt="Даньчик"> <img src="img/photo2.jpg" alt="Даньчик снова"> <img src="img/photo3.jpg" alt="Даньчик"> <img src="img/photo4.jpg" alt="Даньчик снова"> <img src="img/photo5.jpg" alt="Даньчик"> <img src="img/photo6.jpg" alt="Даньчик снова"> <img src="img/photo7.jpg" alt="Даньчик"> <img src="img/photo8.jpg" alt="Даньчик снова"> <img src="img/photo9.jpg" alt="Даньчик"> <img src="img/photo10.jpg" alt="Даньчик снова"> <img src="img/photo11.jpg" alt="Даньчик"> <img src="img/photo12.jpg" alt="Даньчик снова"> <img src="img/photo13.jpg" alt="Даньчик"> <img src="img/photo14.jpg" alt="Даньчик снова"> <img src="img/photo15.jpg" alt="Даньчик"> <img src="img/photo16.jpg" alt="Даньчик снова"> <img src="img/photo17.jpg" alt="Даньчик"> <img src="img/photo18.jpg" alt="Даньчик снова"> <img src="img/photo19.jpg" alt="Даньчик"> <img src="img/photo20.jpg" alt="Даньчик снова"> <img src="img/photo21.jpg" alt="Даньчик снова"> <img src="img/photo22.jpg" alt="Даньчик"> <img src="img/photo23.jpg" alt="Даньчик снова"> <img src="img/photo24.jpg" alt="Даньчик"> <img src="img/photo25.jpg" alt="Даньчик снова"> </div>
+</section>
+
+<section class="secret-access">
+  <h2>Секретный раздел 🎁</h2>
+  <p>Хочешь увидеть чудо? 😉</p>
+  <button id="show-secret-btn">Покажи чудо</button>
+  <div id="secret-form" class="hidden">
+    <input type="text" id="secret-input" placeholder="Введи пароль..." />
+    <button id="check-secret">Войти</button>
+    <p id="secret-message"></p>
+  </div>
+</section>
+
+<footer>
+  Сделано с ❤️ специально для <span>Даньчика</span>
+</footer>
+
+<script>
+// Авто-прокрутка галереи
+const gallery = document.querySelector('.gallery-container');
+let scrollAmount = 0;
+setInterval(() => {
+  gallery.scrollBy({ left: 300, behavior: 'smooth' });
+  scrollAmount += 300;
+  if (scrollAmount >= gallery.scrollWidth - gallery.clientWidth) {
+    gallery.scrollTo({ left: 0, behavior: 'smooth' });
+    scrollAmount = 0;
+  }
+}, 3000);
+
+const catItems = document.querySelectorAll('.cat-item');
+let currentlyPlaying = null;
+
+catItems.forEach(item => {
+  const audio = item.querySelector('.purr-sound');
+  
+  item.addEventListener('click', () => {
+    // Если уже играет другой звук, остановим его
+    if (currentlyPlaying && currentlyPlaying !== audio) {
+      currentlyPlaying.pause();
+      currentlyPlaying.currentTime = 0;
+    }
+
+    // Если кликаем по уже играющему аудио, остановим его
+    if (audio.paused) {
+      audio.currentTime = 0;
+      audio.play();
+      currentlyPlaying = audio;
+    } else {
+      audio.pause();
+      audio.currentTime = 0;
+      currentlyPlaying = null;
+    }
+  });
+});
+
+async function sha256(str) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+const PASSWORD_HASH = '3dd0cc283ba57c9c59b7ac113115ac60b25d533604fb06fe336162d2e23d7db3'; 
+
+document.getElementById('show-secret-btn').addEventListener('click', () => {
+  document.getElementById('secret-form').classList.toggle('hidden');
+});
+
+document.getElementById('check-secret').addEventListener('click', async () => {
+  const input = document.getElementById('secret-input').value.trim();
+  const msg = document.getElementById('secret-message');
+  const inputHash = await sha256(input);
+
+  if (inputHash === PASSWORD_HASH) {
+    window.location.href = "secret.html"; // переход на секретную страницу
+  } else {
+    msg.textContent = "❌ Не угадал! Попробуй ещё 😉";
+    msg.style.color = "#ff4444";
+  }
+});
+</script>
+</body>
+</html>
