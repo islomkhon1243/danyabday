@@ -415,7 +415,7 @@ document.getElementById('check-secret').addEventListener('click', async () => {
   const inputHash = await sha256(input);
 
   if (inputHash === PASSWORD_HASH) {
-    window.location.href = "secret.html"; // переход на секретную страницу
+    window.location.href = "secret/secret.html"; // переход на секретную страницу
   } else {
     msg.textContent = "❌ Не угадал! Попробуй ещё 😉";
     msg.style.color = "#ff4444";
@@ -424,3 +424,4 @@ document.getElementById('check-secret').addEventListener('click', async () => {
 </script>
 </body>
 </html>
+
