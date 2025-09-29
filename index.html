@@ -421,7 +421,34 @@ document.getElementById('check-secret').addEventListener('click', async () => {
     msg.style.color = "#ff4444";
   }
 });
+
+  const logo = document.getElementById('logo');
+
+  // Создаем аудио-объекты, чтобы они не перекрывали другие звуки
+  const tracks = [
+    new Audio('music/music1.mp3'),
+    new Audio('music/music2.mp3'),
+    new Audio('music/music3.mp3')
+  ];
+
+  let clickCount = 0;
+
+  logo.addEventListener('click', () => {
+    // Остановим все треки перед запуском нового
+    tracks.forEach(track => {
+      track.pause();
+      track.currentTime = 0;
+    });
+
+    if (clickCount < tracks.length) {
+      tracks[clickCount].play();
+    }
+    
+    clickCount++;
+    if (clickCount > tracks.length) clickCount = 0; // на 4-й клик — все отключено
+  });
 </script>
 </body>
 </html>
+
 
