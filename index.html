@@ -6,6 +6,7 @@
 <title>С Днём Рождения, Даньчик!</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Rubik+Glitch&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
 body {
   margin: 0;
@@ -33,6 +34,7 @@ header {
   display: flex;
   align-items: center;
   gap: 10px;
+  cursor: pointer;
 }
 
 .logo img {
@@ -69,8 +71,7 @@ header {
 }
 
 .hero h1 {
-  font-size: 4vw;
-  max-font-size: 70px;
+  font-size: clamp(2rem, 6vw, 70px);
   color: #ff0080;
   text-shadow: 0 0 20px #ff0080, 0 0 40px #ff0080;
   margin: 0;
@@ -104,7 +105,7 @@ header {
 
 .wishes-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
 }
 
@@ -279,9 +280,14 @@ footer span {
 @media (max-width: 768px) {
   .hero h1 { font-size: 6vw; }
   .hero p { font-size: 1rem; }
-  .wish-card img { width: 100%; }
   .cat-item { width: 45%; }
-  .gallery-container img { height: 280px; }
+  .gallery-container img { height: 220px; }
+  .signature-svg {
+      height: 150px;
+    }
+    .signature-text {
+      font-size: 50px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -290,61 +296,204 @@ footer span {
   .hero p { font-size: 0.9rem; }
   .cats h2 { font-size: 1.5rem; }
   .cat-item { width: 90%; }
-  .gallery-container img { height: 280px; }
+  .gallery-container img { height: 200px; }
+  .signature-svg {
+      height: 120px;
+    }
+    .signature-text {
+      font-size: 36px;
+    }
 }
+
+/* Анимация появления */
+    .hidden {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease-out;
+    }
+    .show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+#music-section {
+  text-align: center;
+  padding: 50px 20px;
+  background: linear-gradient(135deg, #0a0a0a, #111);
+  color: #0ff;
+}
+
+#music-section h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  text-shadow: 0 0 15px #0ff;
+}
+
+.music-cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.music-card {
+  width: 100px;
+  height: 100px;
+  background: rgba(0, 255, 255, 0.1);
+  border: 2px solid #0ff;
+  border-radius: 20px;
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 0 20px #0ff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.music-card:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 30px #ff00ff;
+}
+
+#now-playing {
+  margin-top: 25px;
+  font-size: 1.2em;
+  color: #ff66cc;
+  text-shadow: 0 0 10px #ff00ff;
+}
+
+#signature-section {
+    padding: 80px 20px;
+    text-align: center;
+    background: radial-gradient(circle at center, #0a0a0f, #000);
+    color: #fff;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 40px;
+    color: #0ff;
+    text-shadow: 0 0 10px #0ff, 0 0 20px #ff00ff;
+  }
+
+  .signature-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .signature-svg {
+    width: 90%;
+    max-width: 800px;
+    height: 200px;
+  }
+
+  .signature-text {
+    font-family: 'Pacifico', cursive;
+    font-size: 80px;
+    fill: none;
+    stroke: #0ff;
+    stroke-width: 2;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    text-shadow: 0 0 20px #0ff;
+  }
+
+  .signature-text.animate {
+    animation: draw-signature 30s ease forwards;
+  }
+
+  @keyframes draw-signature {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
 </style>
 </head>
 <body>
 
 <header>
   <div class="logo" id="logo">
-    <img src="img/photo1.jpg" alt="Даньчик">
+    <img src="img/photo1.jpg" alt="Даньчик" loading="lazy">
     <span>Данька-встанька</span>
   </div>
 </header>
 
-<section class="hero">
+<section class="hero hidden">
   <h1>С Днём Рождения, Даняяяяяяя!</h1>
   <p>Тебе сегодня 23 🎉<br>Ты — мой лучший друг, анимешник, фанат Genshin и кошек 🐾<br>Пусть жизнь сияет неоном, как этот сайт!</p>
 </section>
 
-<section class="genshin-wishes">
+<section class="genshin-wishes hidden">
   <h2>Поздравления от персонажей Genshin</h2>
   <div class="wishes-grid">
     <div class="wish-card">
-      <img src="img/gen1.png" alt="Hu Tao">
+      <img src="img/gen1.png" alt="Furina" loading="lazy">
       <h3>Furina</h3>
       <p>«Ну чё, старик, тебе уже 23... пора думать о гробике, хаха!»</p>
     </div>
     <div class="wish-card">
-      <img src="img/gen2.png" alt="Xiao">
+      <img src="img/gen2.png" alt="Raiden" loading="lazy">
       <h3>Raiden</h3>
       <p>«Опять день рождения? Сколько можно жрать тортики и стареть.»</p>
     </div>
     <div class="wish-card">
-      <img src="img/gen3.png" alt="Чжун Ли">
+      <img src="img/gen3.png" alt="Lumine" loading="lazy">
       <h3>Lumine</h3>
       <p>«Желаю тебе финансовой стабильности… хотя мы оба знаем, что все уйдёт на донат.»</p>
     </div>
     <div class="wish-card">
-      <img src="img/gen4.png" alt="Ху Тао">
+      <img src="img/gen4.png" alt="Mavuika" loading="lazy">
       <h3>Mavuika</h3>
       <p>«Поздравляю! Желаю здоровья… чтобы ты мог дольше страдать в спиральной бездне.»</p>
     </div>
   </div>
 </section>
 
-<section class="cats">
+<section id="music-section" class="hidden">
+  <h2>🎵 Музыкальный уголок 🎵</h2>
+  <div class="music-cards">
+    <div class="music-card" data-src="music/music1.mp3" data-title="Наш любимый Винкс ахаахахахах)">
+      🎶
+    </div>
+    <div class="music-card" data-src="music/music2.mp3" data-title="Genshin Impact game music">
+      🎶
+    </div>
+    <div class="music-card" data-src="music/music3.mp3" data-title="Прислушайся, про тебя поется">
+      🎶
+    </div>
+    <div class="music-card" data-src="music/music4.mp3" data-title="Нет игры нет жизни(нет пизды - нет жизни)">
+      🎶
+    </div>
+	<div class="music-card" data-src="music/music5.mp3" data-title="Ты родился чтобы всем показать...">
+      🎶
+    </div>
+  </div>
+  <p id="now-playing">Ничего не играет</p>
+</section>
+
+<section class="cats hidden">
   <h2>😺 Кошачья галерея</h2>
   <div class="cats-gallery"> <div class="cat-item"> <img src="img/cat1.jpg" alt="Кот мем 1" /> <audio class="purr-sound"> <source src="music/purr.mp3" type="audio/mpeg"> </audio> </div> <div class="cat-item"> <img src="img/cat2.jpg" alt="Кот мем 2" /> <audio class="purr-sound"> <source src="music/purr.mp3" type="audio/mpeg"> </audio> </div> <div class="cat-item"> <img src="img/cat3.jpg" alt="Кот мем 3" /> <audio class="purr-sound"> <source src="music/purr.mp3" type="audio/mpeg"> </audio> </div> <div class="cat-item"> <img src="img/cat4.jpg" alt="Кот мем 4" /> <audio class="purr-sound"> <source src="music/purr.mp3" type="audio/mpeg"> </audio> </div> <div class="cat-item"> <img src="img/cat5.jpg" alt="Кот мем 2" /> <audio class="purr-sound"> <source src="music/purr.mp3" type="audio/mpeg"> </audio> </div> <div class="cat-item"> <img src="img/cat6.jpg" alt="Кот мем 3" /> <audio class="purr-sound"> <source src="music/purr.mp3" type="audio/mpeg"> </audio> </div> <div class="cat-item"> <img src="img/cat7.jpg" alt="Кот мем 1" /> <audio class="purr-sound"> <source src="music/purr.mp3" type="audio/mpeg"> </audio> </div> <div class="cat-item"> <img src="img/cat8.jpg" alt="Кот мем 2" /> <audio class="purr-sound"> <source src="music/purr.mp3" type="audio/mpeg"> </audio> </div> <div class="cat-item"> <img src="img/cat9.jpg" alt="Кот мем 3" /> <audio class="purr-sound"> <source src="music/purr.mp3" type="audio/mpeg"> </audio> </div> <div class="cat-item"> <img src="img/cat10.jpg" alt="Кот мем 3" /> <audio class="purr-sound"> <source src="music/purr.mp3" type="audio/mpeg"> </audio> </div> <div class="cat-item"> <img src="img/cat12.jpg" alt="Кот мем 1" /> <audio class="purr-sound"> <source src="music/purr.mp3" type="audio/mpeg"> </audio> </div> <div class="cat-item"> <img src="img/cat13.jpg" alt="Кот мем 2" /> <audio class="purr-sound"> <source src="music/purr.mp3" type="audio/mpeg"> </audio> </div> <div class="cat-item"> <img src="img/cat14.jpg" alt="Кот мем 3" /> <audio class="purr-sound"> <source src="music/purr.mp3" type="audio/mpeg"> </audio> </div> <div class="cat-item"> <img src="img/cat15.jpg" alt="Кот мем 3" /> <audio class="purr-sound"> <source src="music/purr.mp3" type="audio/mpeg"> </audio> </div> </div>
 </section>
 
-<section class="gallery">
+<section id="signature-section" class="hidden">
+  <div class="signature-container">
+    <svg viewBox="0 0 800 200" class="signature-svg">
+      <text x="50%" y="50%" text-anchor="middle" class="signature-text">
+        Davron Issakov
+      </text>
+    </svg>
+  </div>
+</section>
+
+<section class="gallery hidden">
   <h2>Твоя мини-галерея</h2>
   <div class="gallery-container"> <img src="img/photo1.jpg" alt="Даньчик"> <img src="img/photo2.jpg" alt="Даньчик снова"> <img src="img/photo3.jpg" alt="Даньчик"> <img src="img/photo4.jpg" alt="Даньчик снова"> <img src="img/photo5.jpg" alt="Даньчик"> <img src="img/photo6.jpg" alt="Даньчик снова"> <img src="img/photo7.jpg" alt="Даньчик"> <img src="img/photo8.jpg" alt="Даньчик снова"> <img src="img/photo9.jpg" alt="Даньчик"> <img src="img/photo10.jpg" alt="Даньчик снова"> <img src="img/photo11.jpg" alt="Даньчик"> <img src="img/photo12.jpg" alt="Даньчик снова"> <img src="img/photo13.jpg" alt="Даньчик"> <img src="img/photo14.jpg" alt="Даньчик снова"> <img src="img/photo15.jpg" alt="Даньчик"> <img src="img/photo16.jpg" alt="Даньчик снова"> <img src="img/photo17.jpg" alt="Даньчик"> <img src="img/photo18.jpg" alt="Даньчик снова"> <img src="img/photo19.jpg" alt="Даньчик"> <img src="img/photo20.jpg" alt="Даньчик снова"> <img src="img/photo21.jpg" alt="Даньчик снова"> <img src="img/photo22.jpg" alt="Даньчик"> <img src="img/photo23.jpg" alt="Даньчик снова"> <img src="img/photo24.jpg" alt="Даньчик"> <img src="img/photo25.jpg" alt="Даньчик снова"> </div>
 </section>
 
-<section class="secret-access">
+<section class="secret-access hidden">
   <h2>Секретный раздел 🎁</h2>
   <p>Хочешь увидеть чудо? 😉</p>
   <button id="show-secret-btn">Покажи чудо</button>
@@ -355,49 +504,40 @@ footer span {
   </div>
 </section>
 
-<footer>
+<footer class="hidden">
   Сделано с ❤️ специально для <span>Даньчика</span>
 </footer>
 
 <script>
 // Авто-прокрутка галереи
 const gallery = document.querySelector('.gallery-container');
-let scrollAmount = 0;
 setInterval(() => {
-  gallery.scrollBy({ left: 300, behavior: 'smooth' });
-  scrollAmount += 300;
-  if (scrollAmount >= gallery.scrollWidth - gallery.clientWidth) {
+  if (gallery.scrollLeft + gallery.clientWidth >= gallery.scrollWidth) {
     gallery.scrollTo({ left: 0, behavior: 'smooth' });
-    scrollAmount = 0;
+  } else {
+    gallery.scrollBy({ left: 300, behavior: 'smooth' });
   }
 }, 3000);
 
+// Коты — звук мурчания
 const catItems = document.querySelectorAll('.cat-item');
-let currentlyPlaying = null;
+let audio = new Audio('music/purr.mp3');
+let playing = false;
 
 catItems.forEach(item => {
-  const audio = item.querySelector('.purr-sound');
-  
   item.addEventListener('click', () => {
-    // Если уже играет другой звук, остановим его
-    if (currentlyPlaying && currentlyPlaying !== audio) {
-      currentlyPlaying.pause();
-      currentlyPlaying.currentTime = 0;
-    }
-
-    // Если кликаем по уже играющему аудио, остановим его
-    if (audio.paused) {
-      audio.currentTime = 0;
-      audio.play();
-      currentlyPlaying = audio;
-    } else {
+    if (playing) {
       audio.pause();
       audio.currentTime = 0;
-      currentlyPlaying = null;
+      playing = false;
+    } else {
+      audio.play();
+      playing = true;
     }
   });
 });
 
+// Хэширование пароля
 async function sha256(str) {
   const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
   return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
@@ -422,31 +562,64 @@ document.getElementById('check-secret').addEventListener('click', async () => {
   }
 });
 
-  const logo = document.getElementById('logo');
+let currentAudio = null;
+let currentSrc = null;
 
-  // Создаем аудио-объекты, чтобы они не перекрывали другие звуки
-  const tracks = [
-    new Audio('music/music1.mp3'),
-    new Audio('music/music2.mp3'),
-    new Audio('music/music3.mp3'),
-    new Audio('music/music4.mp3')
-  ];
+document.querySelectorAll('.music-card').forEach(card => {
+  card.addEventListener('click', () => {
+    const src = card.dataset.src;
+    const title = card.dataset.title;
 
-  let clickCount = 0;
-
-  logo.addEventListener('click', () => {
-    // Остановим все треки перед запуском нового
-    tracks.forEach(track => {
-      track.pause();
-      track.currentTime = 0;
-    });
-
-    if (clickCount < tracks.length) {
-      tracks[clickCount].play();
+    // Если уже играет этот же трек → выключаем
+    if (currentAudio && currentSrc === src && !currentAudio.paused) {
+      currentAudio.pause();
+      currentAudio.currentTime = 0;
+      currentAudio = null;
+      currentSrc = null;
+      document.getElementById('now-playing').textContent = "Ничего не играет";
+      return;
     }
-    
-    clickCount++;
-    if (clickCount > tracks.length) clickCount = 0; // на 4-й клик — все отключено
+
+    // Останавливаем предыдущий трек (если другой)
+    if (currentAudio) {
+      currentAudio.pause();
+      currentAudio.currentTime = 0;
+    }
+
+    // Создаём новый плеер и запускаем
+    currentAudio = new Audio(src);
+    currentSrc = src;
+    currentAudio.play();
+
+    document.getElementById('now-playing').textContent = "Играет: " + title;
+  });
+});
+
+// ==== Анимация появления при скролле ====
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  document.querySelectorAll(".hidden").forEach(el => observer.observe(el));
+  
+  document.addEventListener("DOMContentLoaded", () => {
+    const signature = document.querySelector(".signature-text");
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          signature.classList.add("animate");
+          observer.unobserve(signature);
+        }
+      });
+    }, { threshold: 0.6 });
+
+    observer.observe(signature);
   });
 </script>
 </body>
